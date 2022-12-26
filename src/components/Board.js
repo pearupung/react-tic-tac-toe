@@ -11,19 +11,22 @@ const Board = () => {
     return (
         <table>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+                {gameTable[0].map(cell => (
+                    <td>{cell}</td>
+                ))
+                }
             </tr>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+            {gameTable[1].map(cell => (
+                    <td>{cell}</td>
+                ))
+                }
             </tr>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+            {gameTable[2].map(cell => (
+                    <td>{cell}</td>
+                ))
+                }
             </tr>
         </table>
     )
