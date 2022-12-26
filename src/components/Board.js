@@ -10,24 +10,14 @@ const Board = () => {
 
     return (
         <table>
-            <tr>
-                {gameTable[0].map(cell => (
+            {gameTable.map(row => (
+                <tr>
+                    {row.map(cell => (
                     <td>{cell}</td>
                 ))
                 }
-            </tr>
-            <tr>
-            {gameTable[1].map(cell => (
-                    <td>{cell}</td>
-                ))
-                }
-            </tr>
-            <tr>
-            {gameTable[2].map(cell => (
-                    <td>{cell}</td>
-                ))
-                }
-            </tr>
+                </tr>
+            ))}
         </table>
     )
 }
