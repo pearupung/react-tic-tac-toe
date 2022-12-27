@@ -37,7 +37,10 @@ const Board = () => {
         <div className="game-board">
         {board.map((row, rindex) => {
         return row.map((cell, cindex) => (
-            <div onClick={() => {selectCell(rindex, cindex)}} key={rindex + cindex} className="box">
+            <div 
+                onClick={() => {selectCell(rindex, cindex)}} 
+                key={rindex + cindex} 
+                className="box">
                 {cell}
             </div>
         ))
