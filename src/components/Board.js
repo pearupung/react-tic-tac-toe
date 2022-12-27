@@ -1,31 +1,51 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const Board = () => {
 
-    let gameTable = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
+    let playerOneSymbol = '❌'
+    let playerTwoSymbol = '⭕'
+    let boardSize = 2
+
+    const [board, setBoardState] = useState([
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', ''],
+    ])
+
+    const [player, setPlayerState] = useState(playerOneSymbol)
+
+    const selectCell = (row, col) => {
+        console.log(`Row: ${row}, Col: ${col}`)
+        if (row > boardSize || col > boardSize || board[row][col] !== '') {
+            return
+        }
+
+        const newBoard = board
+        newBoard[row][col] = player
+        setBoardState(newBoard)
+        // switch players
+        if (player === playerOneSymbol) {
+            setPlayerState(playerTwoSymbol)
+        }
+        else {
+            setPlayerState(playerOneSymbol)
+        }
+    }
 
     return (
-        <table>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-        </table>
+        <div className="game-board">
+        {board.map((row, rindex) => {
+        return row.map((cell, cindex) => (
+            <div 
+                onClick={() => {selectCell(rindex, cindex)}} 
+                key={rindex + cindex} 
+                className="box">
+                {cell}
+            </div>
+        ))
+        })}
+        </div>
     )
 }
 
