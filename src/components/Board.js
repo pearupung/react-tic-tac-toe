@@ -2,23 +2,25 @@ import PropTypes from "prop-types";
 
 const Board = () => {
 
+    let playerOneSymbol = '❌'
+    let playerTwoSymbol = '⭕'
+
     let gameTable = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
+        ['❌', '⭕', '⭕'],
+        ['❌', '⭕', '⭕'],
+        ['❌', '⭕', '⭕'],
     ]
 
     return (
-        <table>
-            {gameTable.map(row => (
-                <tr>
-                    {row.map(cell => (
-                    <td>{cell}</td>
-                ))
-                }
-                </tr>
-            ))}
-        </table>
+        <div className="game-board">
+        {gameTable.map((row, rindex) => {
+        return row.map((cell, cindex) => (
+            <div key={rindex + cindex} className="box">
+                {cell}
+            </div>
+        ))
+        })}
+        </div>
     )
 }
 
